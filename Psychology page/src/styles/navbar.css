@@ -1,0 +1,246 @@
+.Header {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  top: 0;
+  height: 100px; /* تغییر ارتفاع نوار ناوبری */
+  max-height: 70px;
+  width: 100vw;
+  display: grid;
+  grid-template-areas: "nav logo";
+  /* Cosmetics */
+  background-color: #5B7D87;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.Logo {
+  grid-area: logo;
+  height: 70px;
+  
+    margin-right: 690px; /* Adjust the margin as needed */
+
+}
+
+.Nav a:hover {
+  transform: scale(1.7);
+}
+
+
+
+
+.Burger {
+  display: none;
+  grid-area: burger;
+  margin: 0 20px 0 0;
+  padding: 0;
+  justify-self: end;
+  font-size: 40px;
+  border: none;
+  background: none;
+  outline: none;
+  transition: 0.1s;
+}
+
+.Burger:active {
+  transform: scale(1);
+}
+
+@media (max-width: 700px) {
+  .Header {
+    grid-template-areas: "burger logo" /* Reversed order */ "nav nav";
+  }
+
+  .Nav {
+    grid-template-rows: repeat(4, auto);
+    grid-template-columns: none;
+    grid-row-gap: 20px;
+    padding: 30px 0 30px;
+    background: rgba(40, 44, 47, 0.95);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .Burger {
+    display: inline;
+    justify-content: flex-end;
+}
+}
+
+.NavAnimation-enter {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.NavAnimation-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 350ms, transform 350ms;
+}
+
+.NavAnimation-exit {
+  opacity: 1;
+}
+
+.NavAnimation-exit-active {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 350ms, transform 350ms;
+}
+
+
+
+
+.Nav {
+  display: grid;
+  grid-area: nav;
+  grid-template-columns: repeat(4, 140px);
+  align-items: center;
+  justify-items: center;
+  grid-gap: 10px; /* کاهش فاصله بین لینک‌ها */
+}
+
+.Nav a {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  transition: 0.5s;
+  text-decoration: none;
+}
+
+.Nav a:last-child {
+  margin-right: 0;
+}
+
+/* مطمئن شوید که کدهای قبلی در اینجا قرار دارند */
+
+@media (max-width: 700px) {
+  .Header {
+    grid-template-areas: "burger logo" "nav nav";
+  }
+
+  .Nav {
+    grid-template-rows: repeat(4, auto);
+    grid-template-columns: none;
+    grid-row-gap: 10px; /* کاهش فاصله بین لینک‌ها در حالت ریسپانسیو */
+    padding: 20px 0 20px;
+    /* مطمئن شوید که کدهای قبلی در اینجا قرار دارند */
+  }
+}
+
+.Nav a {
+  padding-bottom: 2px;
+  margin-right: 1px;
+  margin-bottom: 5px;
+  
+ 
+  color: #ffffff;
+}
+
+.Nav a:last-child {
+  margin-right: 0;
+}
+
+.Nav a:hover {
+  border-bottom-color: #45415E;
+  color: #45415E;
+}
+
+.container .search{
+  position: absolute;
+  margin:auto;
+  top: 0;
+  right: 10px;
+  left: 100px;
+  bottom: 0;
+  width: 50px;
+  height: 50px;
+  background-color:  #45415E;
+  border-radius: 50%;
+  z-index: 4;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+  transition: 1s all;
+}
+.container .search:hover{
+  cursor: pointer;
+}
+.container .search::before{
+  content: " ";
+  position: absolute;
+  margin: auto;
+  top: 22px;
+  left: 22px;
+  right: 0;
+  bottom: 0;
+  width: 12px;
+  height: 2px;
+  background-color: #fff;
+  transform: rotate(45deg);
+  transition: 0.5s all;
+}
+.container .search::after{
+  content: " ";
+  position: absolute;
+  margin: auto;
+  top: -5px;
+  left: -5px;
+  right: 0;
+  bottom: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid #fff ;
+  transition: 0.5s all;
+}
+.container input{
+  position: absolute;
+  margin: auto;
+  top: 0px;
+  left: 0px;
+  right: 0;
+  bottom: 0;
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border: none;
+  background-color:  #45415E;
+  color: #fff;
+  text-shadow: 0 0 10px  #45415E;
+  padding: 0 80px 0 20px;
+  border-radius: 30px;
+  box-shadow: 0 0 25px 0  #45415E, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  z-index: 5;
+  letter-spacing: 0.1em;
+  transition: 1s all;
+}
+.container input:hover{
+  cursor: pointer;
+}
+.container input:focus{
+  width: 300px;
+  opacity: 1;
+  cursor: text;
+}
+.container input:focus ~ .search{
+  right: -250px;
+  background-color: #151515;
+  z-index: 6;
+}
+.container input:focus ~ .search::before{
+  top: 0;
+  left: 0;
+  width: 25px;
+}
+.container input:focus ~ .search::after{
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  border: none;
+  background-color: #fff;
+  border-radius: 0;
+  transform: rotate(-45deg);
+}
+.container input::placeholder{
+  color: #fff;
+}
